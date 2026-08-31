@@ -1,0 +1,56 @@
+---
+title: "Request Money Transfer"
+api: "POST https://api.nolimittopup.com/api/ThaiLan/CustomerTicketByThaiLan/request-money"
+description: "Transfer money from one advertising account to another."
+---
+
+<Note>
+  The ad account that initiates the transfer (`oldAd`) will be revoked when the request is granted.
+</Note>
+
+### Body Parameters
+
+<ParamField body="oldAd" type="long" required>
+  The source ad account ID (will be revoked).
+</ParamField>
+
+<ParamField body="newAd" type="long" required>
+  The destination ad account ID receiving the funds.
+</ParamField>
+
+<ParamField body="accountIdThai" type="string">
+  Optional Thai account reference identifier.
+</ParamField>
+
+<ParamField body="callbackUrl" type="string">
+  Optional Webhook callback URL.
+</ParamField>
+
+<ResponseExample>
+```json 200 OK
+{
+  "success": true,
+  "data": {
+    "createdAt": 1719162000,
+    "note": 0,
+    "callbackUrl": "https://your-domain.com/ticket-callback",
+    "status": "Pending",
+    "reasonForRefusal": null,
+    "accountIdThai": "TH-8812",
+    "id": 50012,
+    "oldAd": {
+      "name": "Advertising Account Name",
+      "facebookUid": "100088921123",
+      "status": "Active",
+      "id": "1001"
+    },
+    "newAd": {
+      "name": "New Account Name",
+      "facebookUid": "100088929999",
+      "status": "Active",
+      "id": "1002"
+    }
+  }
+}
+```
+</ResponseExample>

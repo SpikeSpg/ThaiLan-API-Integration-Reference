@@ -1,0 +1,41 @@
+---
+title: "Get Detail Money Transfer"
+api: "POST https://api.nolimittopup.com/api/ThaiLan/CustomerTicketByThaiLan/get-detail-request-money/{id}"
+description: "Retrieve details and transferId for a money transfer ticket."
+---
+
+### Path Parameters
+
+<ParamField path="id" type="long" required>
+  The unique identifier for the customer ticket you wish to retrieve details for.
+</ParamField>
+
+<ResponseExample>
+```json 200 OK
+{
+  "success": true,
+  "data": {
+    "createdAt": 1719162000,
+    "note": 0,
+    "callbackUrl": "https://your-domain.com/ticket-callback",
+    "status": "Success",
+    "reasonForRefusal": null,
+    "accountIdThai": "TH-8812",
+    "id": 50012,
+    "transferId": 99182,
+    "oldAd": {
+      "name": "Advertising Account Name",
+      "facebookUid": "100088921123",
+      "status": "Revoked",
+      "id": "1001"
+    },
+    "newAd": {
+      "name": "Advertising Account Name",
+      "facebookUid": "100088929999",
+      "status": "Active",
+      "id": "1002"
+    }
+  }
+}
+```
+</ResponseExample>

@@ -1,0 +1,35 @@
+---
+title: "Get All Ads Thai"
+api: "GET https://api.nolimittopup.com/api/ThaiLan/Ad/get-all-ads-Thai"
+description: "Retrieve all Facebook advertisements associated with ThaiLan."
+---
+
+### Response
+
+<ResponseField name="data" type="object[]">
+  Array of ad accounts including balances, status, and top-up fee.
+</ResponseField>
+
+<ResponseExample>
+```json 200 OK
+{
+  "success": true,
+  "message": "",
+  "data": [
+    {
+      "name": "Thai Ad Campaign Alpha",
+      "facebookAdsId": "1673715149385",
+      "lastTopupDate": 1719157200000,
+      "updateAt": 1719164400000,
+      "balance": 1420.50,
+      "timezone": "Asia/Bangkok",
+      "currency": "USD",
+      "nationallity": "Thailand",
+      "adsStatus": "Active",
+      "topupFee": 7.00,
+      "totalAmountTopup": 5000.00
+    }
+  ]
+}
+```
+</ResponseExample>

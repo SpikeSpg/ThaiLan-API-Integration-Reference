@@ -1,0 +1,36 @@
+---
+title: "Check Balance Thai"
+api: "POST https://api.nolimittopup.com/api/ThaiLan/Ad/check-balance-Thai"
+description: "Batch query balance for an array of Facebook Ads IDs."
+---
+
+### Request Body
+
+<ParamField body="body" type="string[]" required>
+  JSON array of Facebook Ads IDs.
+</ParamField>
+
+<RequestExample>
+```json Request Body
+[
+  "1673715149385",
+  "1673715149386"
+]
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 OK
+{
+  "totalRequests": 2,
+  "successCount": 2,
+  "errorCount": 0,
+  "errorDetail": [
+    {
+      "info": "",
+      "message": ""
+    }
+  ]
+}
+```
+</ResponseExample>

@@ -1,0 +1,32 @@
+---
+title: "Create Debt"
+api: "POST https://api.nolimittopup.com/api/ThaiLan/DebtByThaiLan/create-debt"
+description: "Submit a new debt payment record with proof attachment via form-data."
+---
+
+### Form-Data Parameters
+
+<ParamField body="Amount" type="string" required>
+  The total amount of the debt being settled.
+</ParamField>
+
+<ParamField body="ProofPayment" type="string" required>
+  Description or reference for the payment proof.
+</ParamField>
+
+<ParamField body="Wallet" type="string" required>
+  Identifier for the wallet (e.g. `USD`).
+</ParamField>
+
+<ParamField body="files" type="file">
+  Supporting documents or bank receipts.
+</ParamField>
+
+<ResponseExample>
+```json 200 OK
+{
+  "success": true,
+  "message": "Debt created successfully."
+}
+```
+</ResponseExample>

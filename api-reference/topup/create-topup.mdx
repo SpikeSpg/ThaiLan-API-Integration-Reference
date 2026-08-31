@@ -1,0 +1,54 @@
+---
+title: "Create Topup Order"
+api: "POST https://api.nolimittopup.com/api/ThaiLan/TopupOrderByThaiLan/create-topup"
+description: "Submit a new top-up transaction for an ad account."
+---
+
+### Body Parameters
+
+<ParamField body="adsId" type="long" required>
+  The system ID of the advertising account to top up.
+</ParamField>
+
+<ParamField body="amount" type="decimal" required>
+  Amount to top up.
+</ParamField>
+
+<ParamField body="currency" type="string" required>
+  Currency code (e.g., `USD`).
+</ParamField>
+
+<ParamField body="referenceCode" type="string">
+  Optional client reference code.
+</ParamField>
+
+<ParamField body="accountId" type="string">
+  Optional client account ID string.
+</ParamField>
+
+<ResponseExample>
+```json 200 OK
+{
+  "success": true,
+  "data": {
+    "amount": 1000.00,
+    "fee": 70.00,
+    "amountDisplay": 1070.00,
+    "createDate": 1719164400000,
+    "currency": "USD",
+    "status": "Pending",
+    "limitBefore": 0.00,
+    "limitAfter": 0.00,
+    "note": "123456:Code",
+    "accountId": "123456",
+    "referenceCode": "Code",
+    "infoAds": {
+      "name": "Tròi Mây Vip Pro",
+      "facebookUid": "1673715149385",
+      "status": "Pending"
+    },
+    "id": 10074
+  }
+}
+```
+</ResponseExample>

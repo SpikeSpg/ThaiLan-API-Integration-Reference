@@ -1,0 +1,44 @@
+---
+title: "Get Detail Request"
+api: "GET https://api.nolimittopup.com/api/ThaiLan/CustomerTicketByThaiLan/getdetail/{id}"
+description: "Retrieve details of a customer ticket by its unique identifier."
+---
+
+### Headers
+
+<ParamField header="API_KEY" type="string" required>
+  Your active API Key.
+</ParamField>
+
+### Path Parameters
+
+<ParamField path="id" type="long" required>
+  The unique identifier for the customer ticket you wish to retrieve.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X GET "https://api.nolimittopup.com/api/ThaiLan/CustomerTicketByThaiLan/getdetail/10021" \
+  -H "API_KEY: {{YOUR_API_KEY}}"
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 OK
+{
+  "success": true,
+  "data": {
+    "createdAt": 1719157200,
+    "requestType": "Provide Ad account",
+    "quantity": 1,
+    "currency": "USD",
+    "timezone": "Asia/Bangkok",
+    "status": "Success",
+    "reasonForRefusal": null,
+    "idBm": "123456789012345",
+    "accountId": "1673715149385",
+    "id": 10021
+  }
+}
+```
+</ResponseExample>

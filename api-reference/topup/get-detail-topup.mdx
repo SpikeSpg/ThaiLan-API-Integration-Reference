@@ -1,0 +1,43 @@
+---
+title: "Get Detail TopupOrder"
+api: "GET https://api.nolimittopup.com/api/ThaiLan/TopupOrderByThaiLan/getdetail/{orderId}"
+description: "Retrieve details and execution messages of a specific top-up order."
+---
+
+### Path Parameters
+
+<ParamField path="orderId" type="integer" required>
+  The unique identifier of the top-up order you wish to retrieve details for.
+</ParamField>
+
+<ResponseExample>
+```json 200 OK
+{
+  "success": true,
+  "data": {
+    "amount": 1000.00,
+    "fee": 70.00,
+    "amountDisplay": 1070.00,
+    "createDate": 1719164400000,
+    "currency": "USD",
+    "status": "Success",
+    "limitBefore": 0.00,
+    "limitAfter": 1000.00,
+    "accountId": "123456",
+    "referenceCode": "Code",
+    "infoAds": {
+      "name": "Tròi Mây Vip Pro",
+      "facebookUid": "1673715149385",
+      "status": "Active"
+    },
+    "detailMessage": [
+      {
+        "message": "Topup order created successfully",
+        "createdDate": 1719164400000
+      }
+    ],
+    "id": 10074
+  }
+}
+```
+</ResponseExample>

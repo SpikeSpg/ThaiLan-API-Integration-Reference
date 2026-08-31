@@ -1,0 +1,100 @@
+---
+title: "Create Account Request"
+api: "POST https://api.nolimittopup.com/api/ThaiLan/CustomerTicketByThaiLan/request-account"
+description: "Submit an account provisioning request for Thai businesses."
+---
+
+### Headers
+
+<ParamField header="API_KEY" type="string" required>
+  Your active API Key.
+</ParamField>
+
+### Body Parameters
+
+<ParamField body="bmId" type="string" required>
+  ID of the Business Manager.
+</ParamField>
+
+<ParamField body="currency" type="string" required>
+  Ad account currency (e.g. `USD`, `THB`).
+</ParamField>
+
+<ParamField body="timezone" type="string" required>
+  Timezone identifier (e.g. `Asia/Bangkok`).
+</ParamField>
+
+<ParamField body="quantity" type="integer" required>
+  Number of advertising accounts requested.
+</ParamField>
+
+<ParamField body="accountId" type="string">
+  Optional ID of the account.
+</ParamField>
+
+<ParamField body="callbackUrl" type="string">
+  Webhook URL to receive notification when the ticket has been processed.
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the request was successful.
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  Ticket provisioning details including `id`, `createdAt`, `status`, and `idBm`.
+</ResponseField>
+
+<RequestExample>
+```bash cURL
+curl -X POST "https://api.nolimittopup.com/api/ThaiLan/CustomerTicketByThaiLan/request-account" \
+  -H "API_KEY: {{YOUR_API_KEY}}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "bmId": "123456789012345",
+    "currency": "USD",
+    "timezone": "Asia/Bangkok",
+    "quantity": 1,
+    "accountId": "ACC-9921",
+    "callbackUrl": "https://your-domain.com/ticket-callback"
+  }'
+```
+
+```python Python
+import requests
+
+url = "https://api.nolimittopup.com/api/ThaiLan/CustomerTicketByThaiLan/request-account"
+headers = {"API_KEY": "YOUR_API_KEY", "Content-Type": "application/json"}
+payload = {
+    "bmId": "123456789012345",
+    "currency": "USD",
+    "timezone": "Asia/Bangkok",
+    "quantity": 1,
+    "accountId": "ACC-9921",
+    "callbackUrl": "https://your-domain.com/ticket-callback"
+}
+response = requests.post(url, json=payload, headers=headers)
+print(response.json())
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 OK
+{
+  "success": true,
+  "data": {
+    "createdAt": 1719157200,
+    "requestType": "Provide Ad account",
+    "quantity": 1,
+    "currency": "USD",
+    "timezone": "Asia/Bangkok",
+    "status": "Pending",
+    "reasonForRefusal": null,
+    "idBm": "123456789012345",
+    "accountId": "ACC-9921",
+    "id": 10021
+  }
+}
+```
+</ResponseExample>

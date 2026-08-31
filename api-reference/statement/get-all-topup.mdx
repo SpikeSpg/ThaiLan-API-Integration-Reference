@@ -1,0 +1,40 @@
+---
+title: "Get All Top-Up Orders"
+api: "GET https://api.nolimittopup.com/api/ThaiLan/TopupOrderByThaiLan/get-all-topup"
+description: "Retrieve all top-up orders / customer statements from the ThaiLan service."
+---
+
+### Response
+
+<ResponseField name="data" type="object[]">
+  Array of historical topup transactions.
+</ResponseField>
+
+<ResponseExample>
+```json 200 OK
+{
+  "success": true,
+  "data": [
+    {
+      "amount": 1000.00,
+      "fee": 70.00,
+      "amountDisplay": 1070.00,
+      "createDate": "2025-06-23T15:40:06.9970029",
+      "currency": "USD",
+      "status": 1,
+      "limitBefore": 0.00,
+      "limitAfter": 1000.00,
+      "note": "123456:Code",
+      "accountId": "123456",
+      "referenceCode": "Code",
+      "infoAds": {
+        "name": "Tròi Mây Vip Pro",
+        "facebookUid": "1673715149385",
+        "status": "Pending"
+      },
+      "id": 10074
+    }
+  ]
+}
+```
+</ResponseExample>

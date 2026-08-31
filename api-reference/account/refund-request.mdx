@@ -1,0 +1,41 @@
+---
+title: "Request a Refund"
+api: "POST https://api.nolimittopup.com/api/ThaiLan/CustomerTicketByThaiLan/refund-request"
+description: "Create a refund request for an advertising account."
+---
+
+### Headers
+
+<ParamField header="API_KEY" type="string" required>
+  Your active API Key.
+</ParamField>
+
+### Body Parameters
+
+<ParamField body="adId" type="long" required>
+  The system ID of the advertising account to refund.
+</ParamField>
+
+<ParamField body="callbackUrl" type="string">
+  Webhook notification callback URL.
+</ParamField>
+
+<ResponseExample>
+```json 200 OK
+{
+  "success": true,
+  "data": {
+    "createdAt": 1719160000,
+    "requestType": "Return and refund money Ad account",
+    "quantity": 0,
+    "currency": "USD",
+    "timezone": "Asia/Bangkok",
+    "status": "Pending",
+    "reasonForRefusal": null,
+    "idBm": "123456789012345",
+    "accountId": "1673715149385",
+    "id": 10025
+  }
+}
+```
+</ResponseExample>

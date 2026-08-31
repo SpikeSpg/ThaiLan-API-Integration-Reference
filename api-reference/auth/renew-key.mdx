@@ -1,0 +1,52 @@
+---
+title: "Renew API Key"
+api: "POST https://api.nolimittopup.com/api/BusinessApiLog/CreateApiKeyByThaiLan"
+description: "Generate a new API Key based on the expiring old key."
+---
+
+### Query Parameters
+
+<ParamField query="KeyOld" type="string" required>
+  The old/expiring API Key that is being used to generate the new key.
+</ParamField>
+
+### Headers
+
+<ParamField header="API_KEY" type="string" required>
+  Your current active API Key.
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Indicates whether the API key creation was successful.
+</ResponseField>
+
+<ResponseField name="data" type="string">
+  The newly generated API key string.
+</ResponseField>
+
+<RequestExample>
+```bash cURL
+curl -X POST "https://api.nolimittopup.com/api/BusinessApiLog/CreateApiKeyByThaiLan?KeyOld=YOUR_OLD_API_KEY" \
+  -H "API_KEY: YOUR_OLD_API_KEY"
+```
+
+```python Python
+import requests
+
+url = "https://api.nolimittopup.com/api/BusinessApiLog/CreateApiKeyByThaiLan?KeyOld=YOUR_OLD_API_KEY"
+headers = {"API_KEY": "YOUR_OLD_API_KEY"}
+response = requests.post(url, headers=headers)
+print(response.json())
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 OK
+{
+  "success": true,
+  "data": "new-generated-api-key-uuid"
+}
+```
+</ResponseExample>

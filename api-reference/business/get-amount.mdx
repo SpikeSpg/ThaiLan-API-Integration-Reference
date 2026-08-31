@@ -1,0 +1,35 @@
+---
+title: "Get Business Amount"
+api: "GET https://api.nolimittopup.com/api/ThaiLan/BusinessByThaiLan/get-amount"
+description: "Retrieve financial amounts and debt balances related to the ThaiLan business."
+---
+
+<Warning>
+  If you attempt a top-up exceeding your current available balance, the operation will be rejected.
+</Warning>
+
+### Response
+
+<ResponseField name="data" type="object">
+  Financial balance values.
+  <Expandable title="properties">
+    <ResponseField name="amountUSD" type="number">Remaining amount of USD wallet.</ResponseField>
+    <ResponseField name="amountVND" type="number">Remaining amount of VND wallet.</ResponseField>
+    <ResponseField name="debtAmountUSD" type="number">Current debt amount in USD wallet.</ResponseField>
+    <ResponseField name="debtAmountVND" type="number">Current debt amount in VND wallet.</ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+```json 200 OK
+{
+  "success": true,
+  "data": {
+    "amountUSD": 4520.00,
+    "amountVND": 0,
+    "debtAmountUSD": 90.00,
+    "debtAmountVND": 0.00
+  }
+}
+```
+</ResponseExample>

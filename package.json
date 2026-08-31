@@ -1,0 +1,26 @@
+{
+  "name": "thailan-api-reference",
+  "version": "2.0.0",
+  "description": "Mintlify-style API Documentation Portal for ThaiLan Enterprise API",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'Static build ready'",
+    "serve": "serve . -p 3000"
+  },
+  "keywords": [
+    "thailan-api",
+    "facebook-ads",
+    "api-documentation",
+    "mintlify"
+  ],
+  "author": "ThaiLan Integration Team",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "serve": "^14.2.4"
+  }
+}

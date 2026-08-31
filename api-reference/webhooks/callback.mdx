@@ -1,0 +1,98 @@
+---
+title: "API Callback Webhook"
+description: "Receive asynchronous webhook callbacks when customer tickets are resolved."
+---
+
+# Webhook Callback Specification
+
+When making an **Account Provisioning Request** or a **Revoke & Refund Request**, supply the `callbackUrl` field:
+
+```json
+{
+  "bmId": "123456789012345",
+  "currency": "USD",
+  "timezone": "Asia/Bangkok",
+  "quantity": 1,
+  "callbackUrl": "https://your-domain.com/ticket-callback"
+}
+```
+
+---
+
+## Inbound Payload Parameters
+
+<ResponseField name="ticketId" type="long" required>
+  The ID of the processed request ticket.
+</ResponseField>
+
+<ResponseField name="status" type="string" required>
+  Status of the processed ticket (`"Success"` or `"Reject"`).
+</ResponseField>
+
+<ResponseField name="requestType" type="string" required>
+  Type of request (`"Provide Ad account"` or `"Return and refund money Ad account"`).
+</ResponseField>
+
+<ResponseField name="adId" type="long">
+  The ID of the assigned advertising account.
+</ResponseField>
+
+<ResponseField name="amountThaiLan" type="number">
+  Amount processed.
+</ResponseField>
+
+<ResponseField name="accountId" type="string">
+  The ID of the account.
+</ResponseField>
+
+<ResponseField name="requireName" type="string">
+  Required account name.
+</ResponseField>
+
+<ResponseField name="businessId" type="long" required>
+  Your business ID.
+</ResponseField>
+
+<ResponseField name="userId" type="long" required>
+  The ID of the user who created the request.
+</ResponseField>
+
+<ResponseField name="processedAt" type="string" required>
+  The datetime when the ticket was processed (`ISO 8601`).
+</ResponseField>
+
+<ResponseField name="withdrawId" type="long">
+  The ID of the withdrawal record.
+</ResponseField>
+
+<ResponseField name="totalRefund" type="number">
+  Total refund amount.
+</ResponseField>
+
+---
+
+## Example Inbound Payload
+
+```json
+{
+  "ticketId": 10021,
+  "status": "Success",
+  "requestType": "Provide Ad account",
+  "adId": 20,
+  "businessId": 37,
+  "userId": 20078,
+  "processedAt": "2025-08-20T08:15:32.658Z",
+  "withdrawId": 112,
+  "totalRefund": 1000
+}
+```
+
+### Expected Server Response
+
+Your webhook receiver endpoint must respond with HTTP `200 OK` and JSON:
+
+```json
+{
+  "success": true
+}
+```

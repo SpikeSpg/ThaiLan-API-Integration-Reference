@@ -1,0 +1,43 @@
+---
+title: "Get Detail Transfer"
+api: "GET https://api.nolimittopup.com/api/ThaiLan/Transfer/get-detail-transfer/{id}"
+description: "Retrieve detailed remittance execution logs and step messages."
+---
+
+### Path Parameters
+
+<ParamField path="id" type="long" required>
+  Unique identifier for the remittance order.
+</ParamField>
+
+<ResponseExample>
+```json 200 OK
+{
+  "success": true,
+  "data": [
+    {
+      "createdAt": "2025-08-20T08:00:00Z",
+      "updatedAt": "2025-08-20T08:15:00Z",
+      "firstTransfer": 500.00,
+      "status": "Completed",
+      "secondTransfer": 500.00,
+      "spent": 240.00,
+      "spentLimit": 1000.00,
+      "remainingAmount": 760.00,
+      "totalTransferAmount": 1000.00,
+      "id": 99182,
+      "histories": [
+        {
+          "message": "Initiated first stage balance transfer of $500.00",
+          "createdDate": "2025-08-20T08:05:00Z"
+        },
+        {
+          "message": "Initiated final stage transfer of $500.00. Old ad account marked as revoked.",
+          "createdDate": "2025-08-20T08:14:00Z"
+        }
+      ]
+    }
+  ]
+}
+```
+</ResponseExample>

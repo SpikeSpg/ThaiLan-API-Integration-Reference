@@ -1,0 +1,33 @@
+---
+title: "Create Loan"
+api: "POST https://api.nolimittopup.com/api/ThaiLan/LoanByThaiLan/create-loan"
+description: "Submit a new credit line / loan request."
+---
+
+### Body Parameters
+
+<ParamField body="amount" type="integer" required>
+  Amount of loan requested (positive integer).
+</ParamField>
+
+<ParamField body="wallet" type="string" required>
+  Currency code (e.g. `USD`).
+</ParamField>
+
+<ResponseExample>
+```json 200 OK
+{
+  "success": true,
+  "message": "Loan created successfully",
+  "data": {
+    "id": 402,
+    "businessId": 37,
+    "userId": 20078,
+    "createAt": "2025-08-29T15:00:00.000Z",
+    "amount": 5000,
+    "wallet": "USD",
+    "status": "Pending"
+  }
+}
+```
+</ResponseExample>

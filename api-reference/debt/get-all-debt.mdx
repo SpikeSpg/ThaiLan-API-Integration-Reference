@@ -1,0 +1,46 @@
+---
+title: "Get All Debt Information"
+api: "GET https://api.nolimittopup.com/api/ThaiLan/DebtByThaiLan/Get-All-Debt"
+description: "Retrieve all debt payments related to Thailand."
+---
+
+### Response
+
+<ResponseField name="data" type="object[]">
+  List of debt payment logs and user details.
+</ResponseField>
+
+<ResponseExample>
+```json 200 OK
+{
+  "success": true,
+  "data": [
+    {
+      "amount": 500.00,
+      "wallet": "USD",
+      "admin": {
+        "id": 1,
+        "name": "Finance Admin",
+        "email": "admin@nolimittopup.com",
+        "avatar": null
+      },
+      "user": {
+        "id": 20078,
+        "name": "Thai Partner",
+        "email": "partner@example.com",
+        "avatar": null
+      },
+      "proofPayment": "REF-9921",
+      "paymentPhoto": "https://storage.nolimittopup.com/proofs/p1.jpg",
+      "previousBalance": 590.00,
+      "remainingBalance": 90.00,
+      "createAt": "2025-08-20T08:15:32.658Z",
+      "status": "Approved",
+      "acceptanceDate": "2025-08-20T09:00:00.000Z",
+      "rejectReason": null,
+      "id": 301
+    }
+  ]
+}
+```
+</ResponseExample>

@@ -1,0 +1,121 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "ThaiLan API Reference",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#10B981",
+    "light": "#34D399",
+    "dark": "#059669",
+    "background": {
+      "dark": "#0B0F17",
+      "light": "#FFFFFF"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "API Base URL",
+      "url": "https://api.nolimittopup.com"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Console",
+    "url": "https://api.nolimittopup.com"
+  },
+  "anchors": [
+    {
+      "name": "API Documentation",
+      "icon": "book-open",
+      "url": "introduction"
+    },
+    {
+      "name": "API Reference",
+      "icon": "code",
+      "url": "api-reference"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Getting Started",
+      "pages": [
+        "introduction",
+        "quickstart"
+      ]
+    },
+    {
+      "group": "APi to get new API_KEY",
+      "pages": [
+        "api-reference/auth/renew-key"
+      ]
+    },
+    {
+      "group": "I. API Account Request (🎫 Account)",
+      "pages": [
+        "api-reference/account/request-account",
+        "api-reference/account/get-detail-account",
+        "api-reference/account/refund-request",
+        "api-reference/account/request-money",
+        "api-reference/account/get-detail-money"
+      ]
+    },
+    {
+      "group": "II. Top Up FB Account (💸 Top Up FB Account)",
+      "pages": [
+        "api-reference/topup/create-topup",
+        "api-reference/topup/get-detail-topup"
+      ]
+    },
+    {
+      "group": "III. Check Balance (📊 Check Balance)",
+      "pages": [
+        "api-reference/balance/check-balance",
+        "api-reference/balance/get-all-ads"
+      ]
+    },
+    {
+      "group": "IV. API Get All Top Up ( 📃 Customer Statement / Receipt)",
+      "pages": [
+        "api-reference/statement/get-all-topup"
+      ]
+    },
+    {
+      "group": "V. API Get information about the current amount of money of the business",
+      "pages": [
+        "api-reference/business/get-amount"
+      ]
+    },
+    {
+      "group": "VI. Payment Order API",
+      "pages": [
+        "api-reference/debt/get-all-debt",
+        "api-reference/debt/create-debt"
+      ]
+    },
+    {
+      "group": "VII. Loans API",
+      "pages": [
+        "api-reference/loans/get-all-loan",
+        "api-reference/loans/create-loan"
+      ]
+    },
+    {
+      "group": "API CALLBACK",
+      "pages": [
+        "api-reference/webhooks/callback"
+      ]
+    },
+    {
+      "group": "VIII. Transfer API",
+      "pages": [
+        "api-reference/transfer/get-all-transfer",
+        "api-reference/transfer/get-detail-transfer"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "website": "https://api.nolimittopup.com"
+  }
+}

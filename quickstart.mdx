@@ -1,0 +1,40 @@
+---
+title: "Quickstart & Authentication"
+description: "How to authenticate, whitelist your IP, and manage API Key renewal."
+---
+
+# Quickstart & Authentication
+
+# Requirements to be able to connect to the API
+
+- We will provide you an Api key, you need to load the Api key with the name `API_KEY` into the header before calling our Api.
+- You need to provide us with your server's IP address so we can do the licensing for that IP address to call our API
+
+## ● Note
+- `API_KEY` will be valid for 2 months. When `API_KEY` expires, you cannot call our API.
+- When `API_KEY` expires you need to call Api to get new Api_Key
+
+```http
+API_KEY: your-api-key-here
+Content-Type: application/json
+```
+
+---
+
+## APi to get new API_KEY
+
+This is a POST request to create an API key using the Thai Lan method. The purpose of this request is to generate a new API key based on the provided old key.
+
+### Request Parameters
+- **URL**: `api.nolimittopup.com/api/BusinessApiLog/CreateApiKeyByThaiLan`
+- **KeyOld** (string): The old API key that is being used to generate the new API key. This parameter is included in the query string of the URL.
+
+```bash
+curl -X POST "https://api.nolimittopup.com/api/BusinessApiLog/CreateApiKeyByThaiLan?KeyOld=YOUR_OLD_KEY" \
+  -H "API_KEY: YOUR_OLD_KEY"
+```
+
+### Notes
+- You can only access this Api when the `API_KEY` is about to expire. Specifically 1 day before and 1 day after expiration.
+- If it's been more than 1 day since the `API_KEY` expired, you will not be able to create a new `API_KEY`. At this time, you can only contact us again to get a new `API_KEY`.
+

@@ -1,0 +1,41 @@
+---
+title: "Get All Loan Information"
+api: "GET https://api.nolimittopup.com/api/ThaiLan/LoanByThaiLan/Get-All-Loan"
+description: "Retrieve all loan records associated with ThaiLan."
+---
+
+### Response
+
+<ResponseField name="data" type="object[]">
+  Array of credit line and loan records.
+</ResponseField>
+
+<ResponseExample>
+```json 200 OK
+[
+  {
+    "id": 401,
+    "businessId": 37,
+    "userId": 20078,
+    "createAt": "2025-08-15T10:00:00.000Z",
+    "amount": 5000,
+    "wallet": "USD",
+    "adminId": 1,
+    "status": "Approved",
+    "infoUser": {
+      "id": 20078,
+      "name": "Thai Partner",
+      "email": "partner@example.com",
+      "avatar": null
+    },
+    "admin": {
+      "id": 1,
+      "name": "Credit Admin",
+      "email": "manager@nolimittopup.com",
+      "avatar": null
+    },
+    "acceptanceDate": "2025-08-15T11:30:00.000Z"
+  }
+]
+```
+</ResponseExample>

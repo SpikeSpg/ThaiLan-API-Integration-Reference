@@ -1,0 +1,47 @@
+---
+title: "Get All Transfers"
+api: "GET https://api.nolimittopup.com/api/ThaiLan/Transfer/get-all"
+description: "Retrieve all remittance and money transfer orders from the ThaiLan service."
+---
+
+### Response
+
+<ResponseField name="data" type="object[]">
+  Array of transfer records with multi-stage transfer amounts and ad details.
+</ResponseField>
+
+<ResponseExample>
+```json 200 OK
+{
+  "success": true,
+  "data": [
+    {
+      "createdAt": "2025-08-20T08:00:00Z",
+      "updatedAt": "2025-08-20T08:15:00Z",
+      "firstTransfer": 500.00,
+      "timeFirstTransfer": "2025-08-20T08:05:00Z",
+      "status": "Completed",
+      "secondTransfer": 500.00,
+      "timeSecondTransfer": "2025-08-20T08:14:00Z",
+      "spent": 240.00,
+      "spentLimit": 1000.00,
+      "remainingAmount": 760.00,
+      "totalTransferAmount": 1000.00,
+      "id": 99182,
+      "oldAd": {
+        "name": "Old Campaign",
+        "facebookUid": "100088921123",
+        "status": "Revoked",
+        "id": "1001"
+      },
+      "newAd": {
+        "name": "New Campaign",
+        "facebookUid": "100088929999",
+        "status": "Active",
+        "id": "1002"
+      }
+    }
+  ]
+}
+```
+</ResponseExample>

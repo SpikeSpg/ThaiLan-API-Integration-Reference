@@ -1013,7 +1013,6 @@ When creating an **Account Request** or **Revoke + Refund Request**, provide the
     }
   ];
 
-  // --- APPLICATION STATE ---
   let currentLang = 'en';
   let currentTheme = localStorage.getItem('thailan_theme') || 'dark';
   let activeSnippetLangs = {};
@@ -1132,6 +1131,16 @@ When creating an **Account Request** or **Revoke + Refund Request**, provide the
 
     document.querySelectorAll('.sidebar-link').forEach(link => {
       link.addEventListener('click', () => {
+        isManualScroll = true;
+        clearTimeout(scrollTimeout);
+        
+        document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        scrollTimeout = setTimeout(() => {
+          isManualScroll = false;
+        }, 800);
+
         const sidebar = document.getElementById('sidebar');
         if (sidebar && window.innerWidth <= 860) {
           sidebar.classList.remove('open');
@@ -1179,7 +1188,9 @@ When creating an **Account Request** or **Revoke + Refund Request**, provide the
 
     return `
       <div class="guide-content" id="${item.id}">
-        ${parsedHtml}
+        <div class="guide-body">
+          ${parsedHtml}
+        </div>
       </div>
     `;
   }
@@ -1761,23 +1772,36 @@ When creating an **Account Request** or **Revoke + Refund Request**, provide the
   }
 
   // --- SCROLL SPY ---
+  let isManualScroll = false;
+  let scrollTimeout = null;
+
   function initScrollSpy() {
     const links = document.querySelectorAll('.sidebar-link');
     const sections = document.querySelectorAll('.endpoint-grid, .guide-content');
 
-    window.addEventListener('scroll', () => {
-      let currentId = '';
-      const scrollPos = window.scrollY + 120;
+    function updateActive() {
+      if (isManualScroll) return;
+
+      const threshold = 220; // Upper viewport active detection zone
+      let currentSection = null;
 
       sections.forEach(sec => {
-        const top = sec.offsetTop;
-        const height = sec.offsetHeight;
-        if (scrollPos >= top && scrollPos < top + height) {
-          currentId = sec.getAttribute('id');
+        const rect = sec.getBoundingClientRect();
+        if (rect.top <= threshold) {
+          currentSection = sec;
         }
       });
 
-      if (currentId) {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+        if (sections.length > 0) {
+          currentSection = sections[sections.length - 1];
+        }
+      } else if (window.scrollY < 40 && sections.length > 0) {
+        currentSection = sections[0];
+      }
+
+      if (currentSection) {
+        const currentId = currentSection.getAttribute('id');
         links.forEach(l => {
           if (l.getAttribute('data-target') === currentId) {
             l.classList.add('active');
@@ -1786,7 +1810,10 @@ When creating an **Account Request** or **Revoke + Refund Request**, provide the
           }
         });
       }
-    });
+    }
+
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
   }
 
   // --- MOBILE MENU ---

@@ -88,12 +88,20 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 24px);
   color-scheme: dark;
   font-family: var(--font-sans);
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+.doc-section,
+.endpoint-grid,
+.guide-content,
+[id] {
+  scroll-margin-top: calc(var(--header-height) + 24px);
 }
 
 body {
